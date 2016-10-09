@@ -12,8 +12,8 @@ namespace CodingInterviewPrep
         {
             Console.WriteLine("Hello, this is interview prep.");
 
-            //LinkedListProblems.kthToLast_Test();
-            //SQProblems.SortStack_Test();
+            LinkedListProblems.kthToLast_Test();
+            SQProblems.SortStack_Test();
             
             BinaryTreeProblems.Test_BinaryTreeInit();
             BinaryTreeProblems.Test_CreateMinimalTree();

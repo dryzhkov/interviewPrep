@@ -9,7 +9,6 @@ namespace CodingInterviewPrep.TreesAndGraphs {
       BinaryTree bTree = new BinaryTree(testData[0]);
 
       for(int i = 1; i < testData.Length; i++) {
-        Console.WriteLine("Adding " + testData[i] + " to the tree");
         bTree.add(testData[i]);
       }
 

@@ -1,11 +1,10 @@
-using System;
 namespace CodingInterviewPrep.StacksAndQueues {
   public class Queue<T> {
-    private class QueueNode<T> {
-      public T data;
-      public QueueNode<T> next;
+    private class QueueNode<K> {
+      public K data;
+      public QueueNode<K> next;
 
-      public QueueNode(T data) {
+      public QueueNode(K data) {
         this.data = data;
         this.next = null;
       }

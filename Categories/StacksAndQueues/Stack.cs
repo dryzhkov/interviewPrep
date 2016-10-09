@@ -2,11 +2,11 @@ using System;
 
 namespace CodingInterviewPrep.StacksAndQueues {
   public class Stack<T> {
-    private class StackNode<T> {
-      public StackNode<T> next;
-      public T data;
+    private class StackNode<K> {
+      public StackNode<K> next;
+      public K data;
 
-      public StackNode(T data) {
+      public StackNode(K data) {
         this.data = data;
         this.next = null;
       }
