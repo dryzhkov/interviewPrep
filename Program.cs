@@ -4,6 +4,7 @@ using CodingInterviewPrep.LinkedList;
 using CodingInterviewPrep.StacksAndQueues;
 using CodingInterviewPrep.TreesAndGraphs;
 using CodingInterviewPrep.BitManipulation;
+using CodingInterviewPrep.DPandRec;
 
 namespace CodingInterviewPrep
 {
@@ -19,8 +20,10 @@ namespace CodingInterviewPrep
             //BinaryTreeProblems.Test_BinaryTreeInit();
             //BinaryTreeProblems.Test_CreateMinimalTree();
 
-            BitManipulationProblems.Test_GetBit();
-            BitManipulationProblems.Test_SetBit();
+            //BitManipulationProblems.Test_GetBit();
+            //BitManipulationProblems.Test_SetBit();
+
+            DynamicProgramming.Test_TripleStep();
         }
     }
 }
