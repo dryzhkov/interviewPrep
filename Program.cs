@@ -23,7 +23,8 @@ namespace CodingInterviewPrep
             //BitManipulationProblems.Test_GetBit();
             //BitManipulationProblems.Test_SetBit();
 
-            DynamicProgramming.Test_TripleStep();
+            //DynamicProgramming.Test_TripleStep();
+            DynamicProgramming.Test_TowerOfHanoi();
         }
     }
 }

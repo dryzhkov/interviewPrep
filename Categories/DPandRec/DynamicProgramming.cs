@@ -1,4 +1,5 @@
 using System;
+using CodingInterviewPrep.StacksAndQueues;
 namespace CodingInterviewPrep.DPandRec {
   public class DynamicProgramming {
     
@@ -94,6 +95,59 @@ namespace CodingInterviewPrep.DPandRec {
       for(int i = 0; i < testInput.Length; i++) {
         Console.WriteLine("# of steps: " + testInput[i] + ", Expected: " + expectedResults[i] + ", Actual: " + TripleStepSmart(testInput[i]));
       }
+    }
+
+
+    public static void Test_TowerOfHanoi() {
+      Stack<int> s1 = new Stack<int>();
+      Stack<int> s2 = new Stack<int>();
+      Stack<int> s3 = new Stack<int>();
+      
+      //s1.push(5);
+      //s1.push(4);
+      s1.push(3);
+      s1.push(2);
+      s1.push(1);
+      Console.WriteLine("+++ Original s1 +++");
+      s1.print();
+      Console.WriteLine("=== Starting Tower of Hanoi ===");
+      SolveTowerOfHanoi(s1, s2, s3);
+      Console.WriteLine("=== s1 ===");
+      s1.print();
+      Console.WriteLine("=== s2 ===");
+      s2.print();
+    }
+
+    public static void SolveTowerOfHanoi(Stack<int> s1, Stack<int> s2, Stack<int> s3) {
+      int numMoves = 0;
+      while (!s1.isEmpty() || !s2.isEmpty()) {
+        numMoves++;
+        int n3 = s3.peek();
+        int n2 = s2.peek();
+        int n1 = s1.peek();
+        Console.WriteLine("Move # " + numMoves + " ||| n1: " + n1 + ", n2: " + n2 + ", n3: " + n3);
+        if (n1 < n3 || n3 == 0) {
+          Console.WriteLine("Case #1");
+          s1.pop();
+          s3.push(n1);
+        } else if (n2 < n3 && n2 != 0) {
+          Console.WriteLine("Case #2");
+          s2.pop();
+          s3.push(n2);
+        } else if (n1 < n2 || n2 == 0) {
+          Console.WriteLine("Case #3");
+          s1.pop();
+          s2.push(n1);
+        } else {
+          Console.WriteLine("Case #4");
+          s3.pop();
+          s2.push(n3);
+        }
+        
+      }
+
+      Console.WriteLine("=== Solved (in " + numMoves + " moves) ====");
+      s3.print();
     }
   }
 }
