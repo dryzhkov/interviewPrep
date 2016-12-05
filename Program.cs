@@ -24,7 +24,9 @@ namespace CodingInterviewPrep
             //BitManipulationProblems.Test_SetBit();
 
             //DynamicProgramming.Test_TripleStep();
-            DynamicProgramming.Test_TowerOfHanoi();
+            //DynamicProgramming.Test_TowerOfHanoi();
+
+            SA.MaxProfit.MaxProfit_Test();
         }
     }
 }
