@@ -16,7 +16,7 @@ namespace CodingInterviewPrep.SA {
     public static double CalculateMaxProfit_BruteForce(double[] prices) {
       double maxProfit = 0;
 
-      if (prices != null && prices.Length > 1) {
+      if (prices != null && prices.Length > 0) {
         for (int i = 0; i < prices.Length; i++) {
           for (int j = i + 1; j < prices.Length; j++) {
             double profit = prices[j] - prices[i];
@@ -33,8 +33,53 @@ namespace CodingInterviewPrep.SA {
 
     // Method 2: Divide and conquer
     //           Keep splitting array into 2 subarrays, get max profit from each, compare and return maximum.
-    //           This has a special case though, the best buy and sell values could be in separate arrays.
+    //           Special case: the best buy and sell values could be in separate arrays.
     //           We have to determine that at each step by simply iterating over array and getting max profit
+    public static double CalculateMaxProfit_DivideConquer(double[] prices) {
+      if (prices == null || prices.Length < 2) {
+        return 0;
+      }
+      return CalculateMaxProfit_DivideConquerHelper(prices, 0, prices.Length - 1);
+    }
+
+    private static double CalculateMaxProfit_DivideConquerHelper(double[] prices, int start, int end) {
+      if (end - start == 1) {
+        return prices[end] - prices[start];
+      } else if (start >= end) {
+        return 0;
+      }
+
+      double maxProfit = 0;
+      int mid = (start + end) / 2;
+
+      // get max profit from left sub array
+      double leftProfit =  CalculateMaxProfit_DivideConquerHelper(prices, start, mid);
+      
+      // get max profit from right sub array
+      double rightProfit = CalculateMaxProfit_DivideConquerHelper(prices, mid + 1, end);
+   
+      // calculate best possible from across 2 subarrays
+      double minLeft = FindMinOrMax(prices, start, mid, false);
+      double maxRight = FindMinOrMax(prices, mid + 1, end, true);
+      double crossArrayProfit = maxRight - minLeft;
+
+      // pick best profit from subarrays and across them
+      maxProfit = (leftProfit > rightProfit) ? leftProfit : rightProfit;
+      maxProfit = (maxProfit > crossArrayProfit) ? maxProfit : crossArrayProfit;
+      return maxProfit;
+    }
+
+    private static double FindMinOrMax(double[] prices, int start, int end, bool findMax) {
+      double result = prices[start];
+      for (int i = start + 1; i <= end; i++) {
+        if (findMax) {
+          result = Math.Max(result, prices[i]);
+        } else {
+          result = Math.Min(result, prices[i]);
+        }
+      }
+      return result;
+    }
 
     // Method 3: Dynamic programming
     //           If we have just one element, we already know that it has to be the best buy/sell pair. 
@@ -61,16 +106,12 @@ namespace CodingInterviewPrep.SA {
       return maxProfit;
     }
 
-
-
-
     public static void MaxProfit_Test() {
-      double[] prices = new double[] { 4, 3, 6, 7 };
-      double result = CalculateMaxProfit_DP(prices);
-      Console.WriteLine("Answer: " + result);
+      double[] prices = new double[] { 10000, 20, 90, 2100, 9, 10, 100};
+      Console.WriteLine("CalculateMaxProfit_BF: Answer: " + CalculateMaxProfit_BruteForce(prices));
+      Console.WriteLine("CalculateMaxProfit_DC: Answer: " + CalculateMaxProfit_DivideConquer(prices));
+      Console.WriteLine("CalculateMaxProfit_DP: Answer: " + CalculateMaxProfit_DP(prices));
+
     }
-
-
-
   }
 }
