@@ -5,6 +5,7 @@ using CodingInterviewPrep.StacksAndQueues;
 using CodingInterviewPrep.TreesAndGraphs;
 using CodingInterviewPrep.BitManipulation;
 using CodingInterviewPrep.DPandRec;
+using CodingInterviewPrep.MultiThreading;
 
 namespace CodingInterviewPrep
 {
@@ -26,7 +27,10 @@ namespace CodingInterviewPrep
             //DynamicProgramming.Test_TripleStep();
             //DynamicProgramming.Test_TowerOfHanoi();
 
-            SA.MaxProfit.MaxProfit_Test();
+            //SA.MaxProfit.MaxProfit_Test();
+            //MultiThreadingExample.Run();
+            DinnerTable dt = new DinnerTable(4);
+            dt.StartDining();
         }
     }
 }
